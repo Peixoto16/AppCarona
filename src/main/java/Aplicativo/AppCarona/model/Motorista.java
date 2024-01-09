@@ -1,22 +1,32 @@
 package Aplicativo.AppCarona.model;
 
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import java.io.Serializable;
 
 @Data
-public class Motorista {
+@Table(name = "TB_MOTORISTA")
+@Entity
+public class Motorista implements Serializable{
+
+    private static final long serialVersionUID = 1L;
 
 
-    private Passageiro passageiro;
-    @OneToOne(mappedBy = "motorista")
+    @Id
+    private Long id;
+
+    @OneToOne
+    @JoinColumn(name = "carro_id")
     private Carro carro;
 
+    @OneToOne
+    @JoinColumn(name = "usuario_id")  // Adicionado JoinColumn para evitar ambiguidade
+    private Usuario usuario;
 
-    // Método para transferir atributos de Passageiro para Motorista
-    public void transferirAtributos(Passageiro passageiro) {
-        this.passageiro = passageiro;
-    }
+    @Column(name = "motorista", nullable = false)
+    private boolean ehMotorista;
+
 
 
 }

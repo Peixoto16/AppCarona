@@ -3,13 +3,16 @@ package Aplicativo.AppCarona.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
 @Data
-@Table(name = "TB_PASSAGEIRO")
-public class Passageiro {
+@Table(name = "TB_USUARIO")
+public class Usuario implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +25,8 @@ public class Passageiro {
     @Column(name = "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
 
-
+    @OneToOne(mappedBy = "usuario")  // Corrigido para "passageiro" em vez de "motorista"
+    private Motorista motorista;
 
 
 }

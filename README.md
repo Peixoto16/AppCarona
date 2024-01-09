@@ -50,3 +50,12 @@ Back end:
 ## Bancos de Dados :
 
     MySQL - Usado em ambiente de desenvolvimento e produção.
+
+
+---------------------------------------------------------------------------------------------------------------
+
+## Assoçicação
+
+- Um motorista so pode ter 1 carro e 1 carro so pode ter 1 motorista.
+- Um motorista so pode ta em uma carrida mais uma corrida pode ter varios motorista.
+- Um passageiro so pode esta em uma corrida mais uma corrida pode ter varios passageiros.
