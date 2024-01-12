@@ -1,11 +1,11 @@
-package Aplicativo.AppCarona.model;
+package Aplicativo.AppCarona.Model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Entity
 @Data
@@ -19,9 +19,10 @@ public class Usuario implements Serializable {
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
     @Column(name = "cpf", nullable = false, unique = true)
-    private String telefone;
+    private String cpf;
     @Column(name = "name", nullable = false)
     private String nome;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
 

@@ -1,4 +1,4 @@
-package Aplicativo.AppCarona.model;
+package Aplicativo.AppCarona.Model;
 
 import jakarta.persistence.*;
 import lombok.Data;
