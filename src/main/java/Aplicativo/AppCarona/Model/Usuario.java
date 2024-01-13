@@ -2,6 +2,8 @@ package Aplicativo.AppCarona.Model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -19,6 +21,8 @@ public class Usuario implements Serializable {
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
     @Column(name = "cpf", nullable = false, unique = true)
+    @Digits(integer = 11, fraction = 0, message = "O CPF deve conter apenas dígitos")
+    @Size(min = 11, max = 11, message = "O CPF deve ter exatamente 11 dígitos")
     private String cpf;
     @Column(name = "name", nullable = false)
     private String nome;

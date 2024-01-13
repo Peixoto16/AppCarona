@@ -18,9 +18,9 @@ public class Carro implements Serializable {
     private Long id;
     @Column(name = "placa", nullable = false, unique = true)
     private String placa;
-    @Column(name = "cor", nullable = false, unique = true)
+    @Column(name = "cor", nullable = false, unique = false)
     private String cor;
-    @Column(name = "modelo", nullable = false, unique = true)
+    @Column(name = "modelo", nullable = false, unique = false)
     private String modelo;
 
 
