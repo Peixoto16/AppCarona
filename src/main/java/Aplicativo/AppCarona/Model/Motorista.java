@@ -6,16 +6,16 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-@Table(name = "TB_MOTORISTA")
 @Entity
+@Table(name = "TB_MOTORISTA")
 public class Motorista implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
 
     @Id
+    @Column(name = "id", nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true)
     private Long id;
 
     @OneToOne

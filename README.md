@@ -60,4 +60,4 @@ Back end:
 - Um motorista so pode ta em uma carrida mais uma corrida pode ter varios motorista.
 - Um passageiro so pode esta em uma corrida mais uma corrida pode ter varios passageiros.
 
-- 
+- Erro ai gerar o id do motorista
