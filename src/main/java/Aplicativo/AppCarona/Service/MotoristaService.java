@@ -1,5 +1,6 @@
 package Aplicativo.AppCarona.Service;
 
+
 import Aplicativo.AppCarona.JpaRepository.CarroRepository;
 import Aplicativo.AppCarona.JpaRepository.MotoristaRepository;
 import Aplicativo.AppCarona.JpaRepository.UsuarioRepository;
@@ -22,7 +23,7 @@ public class MotoristaService implements MotoristaServiceImp {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public void tornarMotorista(Motorista motorista) {
+    public Motorista tornarMotorista(Motorista motorista) {
         // Certifique-se de que os IDs de Carro e Usuário existem
         Carro carroExistente = carroRepository.findById(motorista.getCarro().getId())
                 .orElseThrow(() -> new EntityNotFoundException("Carro não encontrado"));
@@ -36,6 +37,7 @@ public class MotoristaService implements MotoristaServiceImp {
         motorista.setEhMotorista(true);
 
         // Salvando o Motorista
-        motoristaRepository.save(motorista);
+
+        return motoristaRepository.save(motorista);
     }
 }

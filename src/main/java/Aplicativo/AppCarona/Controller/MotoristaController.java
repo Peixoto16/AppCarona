@@ -1,5 +1,6 @@
 package Aplicativo.AppCarona.Controller;
 
+
 import Aplicativo.AppCarona.Model.Motorista;
 import Aplicativo.AppCarona.Service.MotoristaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,9 @@ public class MotoristaController {
     private MotoristaService motoristaService;
 
     @PostMapping
-    public ResponseEntity<String> tornarMotorista(@RequestBody Motorista motorista) {
-        motoristaService.tornarMotorista(motorista);
-        return ResponseEntity.ok("Motorista criado com sucesso !!");
+    public ResponseEntity<Motorista> tornarMotorista(@RequestBody Motorista motorista) {
+       Motorista motor = motoristaService.tornarMotorista(motorista);
+        return ResponseEntity.ok(motor);
     }
 
 }
