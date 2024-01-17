@@ -1,6 +1,8 @@
 package Aplicativo.AppCarona.Service;
 
 
+import Aplicativo.AppCarona.DTO.Response.MotoristaResponse;
+import Aplicativo.AppCarona.DTO.Resquest.MotoristaRequest;
 import Aplicativo.AppCarona.JpaRepository.CarroRepository;
 import Aplicativo.AppCarona.JpaRepository.MotoristaRepository;
 import Aplicativo.AppCarona.JpaRepository.UsuarioRepository;
@@ -23,21 +25,19 @@ public class MotoristaService implements MotoristaServiceImp {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Motorista tornarMotorista(Motorista motorista) {
+
+    public MotoristaResponse tornarMotorista(MotoristaRequest motoristaRequest) {
         // Certifique-se de que os IDs de Carro e Usuário existem
-        Carro carroExistente = carroRepository.findById(motorista.getCarro().getId())
+        Carro carroExistente = carroRepository.findById(motoristaRequest.carro().getId())
                 .orElseThrow(() -> new EntityNotFoundException("Carro não encontrado"));
 
-        Usuario usuarioExistente = usuarioRepository.findById(motorista.getUsuario().getId())
+        Usuario usuarioExistente = usuarioRepository.findById(motoristaRequest.usuario().getId())
                 .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado"));
 
-        // Associe o Carro e o Usuário ao Motorista
-        motorista.setCarro(carroExistente);
-        motorista.setUsuario(usuarioExistente);
-        motorista.setEhMotorista(true);
 
-        // Salvando o Motorista
+        Motorista motorista = motoristaRepository.save(new Motorista(null, carroExistente, usuarioExistente, true));
 
-        return motoristaRepository.save(motorista);
+        // Utilizar projeção para evitar carregar entidade completa do banco de dados
+        return new MotoristaResponse(motorista.getId(), motorista.getCarro(), motorista.getUsuario());
     }
 }

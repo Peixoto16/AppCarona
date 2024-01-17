@@ -29,6 +29,6 @@ public class Motorista implements Serializable{
     @Column(name = "motorista", nullable = false)
     private boolean ehMotorista;
 
-
-
+    public Motorista(Object o, Carro carroExistente, Usuario usuarioExistente, boolean b) {
+    }
 }

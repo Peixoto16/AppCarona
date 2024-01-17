@@ -1,7 +1,8 @@
 package Aplicativo.AppCarona.Service.Interface;
-import Aplicativo.AppCarona.Model.Motorista;
+import Aplicativo.AppCarona.DTO.Response.MotoristaResponse;
+import Aplicativo.AppCarona.DTO.Resquest.MotoristaRequest;
 
 public interface MotoristaServiceImp {
 
-    Motorista tornarMotorista(Motorista motorista);
+    MotoristaResponse tornarMotorista(MotoristaRequest motoristaRequest);
 }

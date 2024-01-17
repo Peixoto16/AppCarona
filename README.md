@@ -61,3 +61,8 @@ Back end:
 - Um passageiro so pode esta em uma corrida mais uma corrida pode ter varios passageiros.
 
 - Erro ai gerar o id do motorista
+
+
+# Erros
+
+- Vou ter que criar as classes maper do dto para transformar o entity em dto e vice e versa
