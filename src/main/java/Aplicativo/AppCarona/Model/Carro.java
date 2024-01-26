@@ -24,7 +24,5 @@ public class Carro implements Serializable {
     private String modelo;
 
 
-    @OneToOne(mappedBy = "carro")
-    private Motorista motorista;
 
 }

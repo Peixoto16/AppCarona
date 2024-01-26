@@ -1,7 +1,6 @@
 package Aplicativo.AppCarona.Service;
 
 import Aplicativo.AppCarona.JpaRepository.UsuarioRepository;
-import Aplicativo.AppCarona.Model.Motorista;
 import Aplicativo.AppCarona.Model.Usuario;
 import Aplicativo.AppCarona.Service.Interface.UsuarioServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;

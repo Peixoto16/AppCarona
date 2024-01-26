@@ -50,19 +50,28 @@ Back end:
 ## Bancos de Dados :
 
     MySQL - Usado em ambiente de desenvolvimento e produção.
-
-
 ---------------------------------------------------------------------------------------------------------------
 
+# Novas
+- Criar um usuarioType com enum em motorista e passageiro e fazer as validaçoes em cima dele.
+- Depois tera a classe transform, que ira decidir se podera ou nao criar a corrida (podera
+criar a corrida caso seja enum motorista)"
+- Se for motorista podera criar corridas e add passageiros nela.
+- Voce entra na corrida com um motorista pede altorização para adicionar para o motorista
+  (mais no momento isso sera muito trabalho entao irei deixar adicionar altomatico, so de 
+   ja esta na corrida voce(passageiro) tem o poder de add alguem e entao ganhar cash back e 
+   desconto chamando alguem para viajar com voce).
+-
 ## Assoçicação
 
 - Um motorista so pode ter 1 carro e 1 carro so pode ter 1 motorista.
 - Um motorista so pode ta em uma carrida mais uma corrida pode ter varios motorista.
 - Um passageiro so pode esta em uma corrida mais uma corrida pode ter varios passageiros.
-
 - Erro ai gerar o id do motorista
 
+# Corridas:
 
-# Erros
+- Crie uma entidade para representar corridas, com informações como local de partida, destino, preço estimado, status da corrida, etc.
+- Associe corridas a motoristas e passageiros.
 
-- Vou ter que criar as classes maper do dto para transformar o entity em dto e vice e versa
+# 

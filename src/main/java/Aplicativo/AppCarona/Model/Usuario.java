@@ -1,5 +1,6 @@
 package Aplicativo.AppCarona.Model;
 
+import Aplicativo.AppCarona.Model.Enum.UsuarioEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
@@ -8,6 +9,8 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,7 +20,7 @@ public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
     @Column(name = "cpf", nullable = false, unique = true)
@@ -29,9 +32,10 @@ public class Usuario implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
+    @Column(name = "tipo_usuario", nullable = false)
+    private UsuarioEnum usuarioEnum;
 
-    @OneToOne(mappedBy = "usuario")  // Corrigido para "passageiro" em vez de "motorista"
-    private Motorista motorista;
+
 
 
 }
