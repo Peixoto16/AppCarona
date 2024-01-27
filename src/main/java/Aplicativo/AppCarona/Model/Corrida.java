@@ -17,47 +17,22 @@ public class Corrida implements Serializable {
 
     @Id
     @Column(name = "id", nullable = false, unique = true)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
-    @JoinColumn(name = "passageiros")
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "tb_passageiro_corrida",
+            joinColumns = @JoinColumn(name = "corrida_id"),
+            inverseJoinColumns = @JoinColumn(name = "passageiro_id")
+    )
     private List<Usuario> passageiro = new ArrayList<>();
 
     @OneToOne
-    @JoinColumn(name = "motorista")
+    @JoinColumn(name = "motorista_id")
     private Usuario motorista;
-
-
-    public Corrida(Usuario usuario) {
-        this.motorista = motorista;
-        this.passageiro = new ArrayList<>();
-        System.out.println(motorista.getNome() + " foi adicionado como motorista.");
-    }
-
-    public Corrida() {
-
-    }
-
-    public static Corrida criarCorridaComMotorista(Usuario usuario) {
-        if (usuario.getUsuarioEnum() == UsuarioEnum.MOTORISTA) {
-            return new Corrida(usuario);
-        } else {
-            System.out.println("Apenas motoristas podem criar corridas.");
-            return null;
-        }
-    }
-
-    public boolean adicionarPassageiro(Usuario passageiro) {
-        if (passageiro.getUsuarioEnum() == UsuarioEnum.PASSAGEIRO) {
-            this.passageiro.add(passageiro);
-            System.out.println(passageiro.getNome() + " foi adicionado como passageiro.");
-            return true;
-        } else {
-            System.out.println("Apenas passageiros podem ser adicionados à corrida.");
-            return false;
-        }
-    }
 
 
 }

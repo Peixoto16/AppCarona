@@ -52,16 +52,6 @@ Back end:
     MySQL - Usado em ambiente de desenvolvimento e produção.
 ---------------------------------------------------------------------------------------------------------------
 
-# Novas
-- Criar um usuarioType com enum em motorista e passageiro e fazer as validaçoes em cima dele.
-- Depois tera a classe transform, que ira decidir se podera ou nao criar a corrida (podera
-criar a corrida caso seja enum motorista)"
-- Se for motorista podera criar corridas e add passageiros nela.
-- Voce entra na corrida com um motorista pede altorização para adicionar para o motorista
-  (mais no momento isso sera muito trabalho entao irei deixar adicionar altomatico, so de 
-   ja esta na corrida voce(passageiro) tem o poder de add alguem e entao ganhar cash back e 
-   desconto chamando alguem para viajar com voce).
--
 ## Assoçicação
 
 - Um motorista so pode ter 1 carro e 1 carro so pode ter 1 motorista.
@@ -74,4 +64,36 @@ criar a corrida caso seja enum motorista)"
 - Crie uma entidade para representar corridas, com informações como local de partida, destino, preço estimado, status da corrida, etc.
 - Associe corridas a motoristas e passageiros.
 
-# 
+# Novas
+- Criar um usuarioType com enum em motorista e passageiro e fazer as validaçoes em cima dele.
+- Depois tera a classe transform, que ira decidir se podera ou nao criar a corrida (podera
+  criar a corrida caso seja enum motorista)"
+- Se for motorista podera criar corridas e add passageiros nela.
+- Voce entra na corrida com um motorista pede altorização para adicionar para o motorista
+  (mais no momento isso sera muito trabalho entao irei deixar adicionar altomatico, so de
+  ja esta na corrida voce(passageiro) tem o poder de add alguem e entao ganhar cash back e
+  desconto chamando alguem para viajar com voce).
+
+----------------------------------------------------------------------------------------------
+# RESOLVER AMANHA 26/01 -->
+- Crias o controller, service e jpaRepositaory da classe corrida
+- Resolver bug da coluna do usuario passageiro ser criado no usuario, por conta do mapeamento,
+porque deve ser criada a coluna na classe Corrida.
+- Vou ter que criar a classe usuario corrida mesmo e associar
+* @Entity
+  @Table(name = "TB_USUARIO_CORRIDA")
+  public class UsuarioCorrida implements Serializable {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+
+  @ManyToOne
+  @JoinColumn(name = "usuario_id")
+  private Usuario usuario;
+
+  @ManyToOne
+  @JoinColumn(name = "corrida_id")
+  private Corrida corrida;
+
+  }

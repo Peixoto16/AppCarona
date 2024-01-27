@@ -20,7 +20,7 @@ public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
     @Column(name = "cpf", nullable = false, unique = true)
@@ -35,7 +35,8 @@ public class Usuario implements Serializable {
     @Column(name = "tipo_usuario", nullable = false)
     private UsuarioEnum usuarioEnum;
 
-
-
+    public Usuario() {
+        // Construtor vazio
+    }
 
 }
